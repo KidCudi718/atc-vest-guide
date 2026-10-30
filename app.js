@@ -54,3 +54,18 @@ function render(){
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.mode;render()});
 ['size','target','dd','daily','split'].forEach(id=>$(id).onchange=render);
 render();
+// Pre-set links, e.g. /?plan=2step&size=25000#calculator
+// plan: 1step | 2step | instant. size: 5000 | 10000 | 25000 | 50000.
+// 1-Step only: target 5|10|15|20, dd 6|7|8, daily 0|3|4|5, split 70|80|90|95.
+(function(){
+  const q=new URLSearchParams(location.search);
+  const keys=['plan','size','target','dd','daily','split'];
+  if(!keys.some(k=>q.has(k)) && location.hash!=='#calculator')return;
+  const modes={'1step':'custom','2step':'two','instant':'instant'};
+  const m=modes[(q.get('plan')||'').toLowerCase()];
+  if(m){mode=m;document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('on',b.dataset.mode==m))}
+  ['size','target','dd','daily','split'].forEach(id=>{const v=q.get(id);const el=$(id);if(v!==null&&[...el.options].some(o=>o.value===v))el.value=v});
+  render();
+  const box=$('calculator');box.open=true;
+  setTimeout(()=>box.scrollIntoView({block:'start'}),50);
+})();
