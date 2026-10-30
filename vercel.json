@@ -1,7 +1,7 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "has": [ { "type": "host", "value": "vestaffiliate.atcspaces.com" } ], "destination": "/affiliate.html" }
+  "redirects": [
+    { "source": "/", "has": [ { "type": "host", "value": "vestaffiliate.atcspaces.com" } ], "destination": "/affiliate", "permanent": false }
   ],
   "headers": [
     { "source": "/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" } ] }
