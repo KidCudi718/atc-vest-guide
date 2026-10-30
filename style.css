@@ -145,3 +145,4 @@ footer{text-align:center;color:#c9ced6;font-size:13px;padding:28px 20px 110px;ma
   .stickybar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#0b0d10f2;border-top:1px solid #1f242c;backdrop-filter:blur(8px)}
   .stickybar .btn{display:block;width:100%;font-size:17px}
 }
+.person .initials{width:56px;height:56px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:#7cf0b4;color:#05140c;font-weight:800;font-size:18px}
